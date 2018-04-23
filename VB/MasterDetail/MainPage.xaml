@@ -1,0 +1,29 @@
+﻿<UserControl xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" x:Class="MasterDetail.MainPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:grid="clr-namespace:DevExpress.AgDataGrid;assembly=DevExpress.AgDataGrid.v9.2" mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">    
+  <Grid x:Name="LayoutRoot">
+        <grid:AgDataGrid x:Name="masterGrid" ColumnsAutoWidth="True" PreviewVisibility="ExpandedForFocusedRow">
+            <grid:AgDataGrid.Columns>
+                <grid:AgDataGridColumn FieldName="CategoryID" />
+                <grid:AgDataGridColumn FieldName="CategoryName" />
+                <grid:AgDataGridColumn FieldName="Description" />                                
+            </grid:AgDataGrid.Columns>
+            <grid:AgDataGrid.PreviewTemplate>
+                <DataTemplate>
+                    <Grid Height="180" Margin="20, 10, 20, 10">
+                        <controls:TabControl>
+                            <controls:TabItem Header="Products">
+                                <grid:AgDataGrid x:Name="detailGrid" DataSource="{Binding Products}" ColumnsAutoWidth="True">
+                                    <grid:AgDataGrid.Columns>
+                                        <grid:AgDataGridColumn FieldName="ProductID" />
+                                        <grid:AgDataGridColumn FieldName="ProductName" />
+                                        <grid:AgDataGridColumn FieldName="CategoryID" />
+                                        <grid:AgDataGridColumn FieldName="UnitPrice" />
+                                    </grid:AgDataGrid.Columns>
+                                </grid:AgDataGrid>
+                            </controls:TabItem>
+                        </controls:TabControl>
+                    </Grid>
+                </DataTemplate>
+            </grid:AgDataGrid.PreviewTemplate>                
+        </grid:AgDataGrid>
+    </Grid>
+</UserControl>
